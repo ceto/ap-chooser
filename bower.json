@@ -1,0 +1,12 @@
+{
+  "name": "ap-chooser",
+  "homepage": "http:/hydrogene.hu/",
+  "authors": [
+    "Gabor Szabo <szabogabi@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "raphael": "raphael.js#^2.2.0"
+  }
+}

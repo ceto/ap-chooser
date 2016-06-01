@@ -1,0 +1,19 @@
+{
+  "dependencies": {
+    "ap-chooser.js": {
+      "files": [
+        "scripts/main.js"
+      ],
+      "main": true
+    },
+    "ap-chooser.css": {
+      "files": [
+        "styles/main.scss"
+      ],
+      "main": true
+    }
+  },
+  "config": {
+    "devUrl": "http://ceti.no-ip.org/deltaliget/"
+  }
+}

@@ -1,0 +1,1 @@
+{"version":3,"sources":["../assets/styles/main.scss"],"names":[],"mappings":"AAKA,KACE,oBAAsB,CACvB","file":"ap-chooser.css","sourcesContent":["// Automatically injected Bower dependencies via wiredep (never manually edit this block)\n// bower:scss\n// endbower\n\n\nbody {\n  background-color: red;\n}"],"sourceRoot":"assets/styles/"}
