@@ -1,1 +1,1 @@
-var i=7;
+jQuery(document).foundation();

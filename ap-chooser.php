@@ -10,6 +10,7 @@
   **/
 
   define( 'APC_PATH', plugin_dir_path( __FILE__ ) );
+  define( 'APC_PATH_URI', plugin_dir_url( __FILE__ ) );
 
   // 1. customize ACF path
   add_filter('acf/settings/path', 'delta_acf_settings_path');
@@ -20,7 +21,7 @@
   // 2. customize ACF dir
   add_filter('acf/settings/dir', 'delta_acf_settings_dir');
   function delta_acf_settings_dir( $dir ) {
-    $dir = APC_PATH  . '/includes/acf/';
+    $dir = APC_PATH_URI  . 'includes/acf/';
     return $dir;
   }
   // 3. Hide ACF field group menu item
@@ -37,7 +38,7 @@
 
 
 
-// # Template for displaying a single lakas
+# Template for displaying a single lakas
 add_filter( 'single_template', 'lakas_single_template');
 function lakas_single_template($single_template) {
     global $post;
@@ -48,20 +49,19 @@ function lakas_single_template($single_template) {
 }
 
 # Template for displaying the lakas archive
-// add_filter( 'archive_template', 'lakas_archive_template') ) ;
-// function lakas_archive_template($archive_template) {
-//     if ( is_post_type_archive('lakas') )
-//         $archive_template = APC_PATH . '/templates/archive-lakas.php';
-//     return $archive_template;
-// }
+add_filter( 'archive_template', 'lakas_archive_template');
+function lakas_archive_template($archive_template) {
+    if ( is_tax('blokk') )
+        $archive_template = APC_PATH . '/templates/taxonomy-blokk.php';
+    return $archive_template;
+}
 
 
 
 // Register styles & scripts sheet.
 function delta_register_apc_stuff() {
-  wp_enqueue_style( 'apc-styles', plugins_url('ap-chooser/dist/styles/ap-chooser.css') );
-  // wp_enqueue_script( 'raphaeljs', plugins_url('ap-chooser/dist/scripts/vendor/raphael.min.js'), array() );
-  wp_enqueue_script( 'apc-scripts', plugins_url('ap-chooser/dist/scripts/ap-chooser.js'), array('jquery') );
+  wp_enqueue_style( 'apc-styles', APC_PATH_URI . 'dist/styles/ap-chooser.css' );
+  wp_enqueue_script( 'apc-scripts', APC_PATH_URI . 'dist/scripts/ap-chooser.js', array('jquery') );
 }
 add_action( 'wp_enqueue_scripts', 'delta_register_apc_stuff' );
 

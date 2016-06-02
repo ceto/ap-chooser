@@ -7,6 +7,20 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "raphael": "raphael.js#^2.2.0"
+    "raphael": "raphael.js#^2.2.0",
+    "foundation-sites": "^6.2.3"
+  },
+  "overrides": {
+    "foundation-sites" : {
+      "main": [
+        "scss/foundation.scss",
+        "dist/plugins/foundation.core.js",
+        "dist/plugins/foundation.util.mediaQuery.js",
+        "dist/plugins/foundation.tooltip.js",
+        "dist/plugins/foundation.util.box.js",
+        "dist/plugins/foundation.util.triggers.js"
+      ]
+    }
   }
+
 }
