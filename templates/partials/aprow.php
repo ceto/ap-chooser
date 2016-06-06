@@ -1,5 +1,5 @@
 <p class="datarow">
-  <a id="ap-<?= get_the_ID();  ?>" class="datarow--link statsuz-<?= get_field('statusz'); ?>" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"
+  <a id="ap-<?= get_the_ID();  ?>" class="datarow--link statusz-<?= get_field('statusz'); ?>" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"
   data-name="<?php the_title(); ?>"
   data-alapterulet="<?= get_field('alapterulet') ?>"
   data-etkezo="<?= get_field('etkezo') ?>"
@@ -9,16 +9,17 @@
   data-statsuz="<?= get_field('statusz') ?>"
   data-svgdata="<?= get_field('svg_data') ?>"
   data-url="<?php the_permalink(); ?>"
+  data-emeletslug="<?= emeletslug(get_the_ID()) ?>"
   >
     <span class="datarow--cell"><?php the_title(); ?></span>
+    <span class="datarow--cell"><?= emeletinfo(get_the_ID()) ?></span>
     <span class="datarow--cell"><?= get_field('alapterulet') ?>m<sup>2</sup></span>
-    <span class="datarow--cell"><?= count( get_field('szobak')) ?></span>
-    <span class="datarow--cell"><?= get_field('konyha') ?>m<sup>2</sup></span>
-    <span class="datarow--cell"><?= get_field('etkezo') ?>m<sup>2</sup></span>
-    <?php if ( get_field('statsuz') === 'free' ) : ?>
-      <span class="datarow--cell"><i class="<?= get_field('statusz') ?>"></i><?= get_field('pris') ?></span>
+    <span class="datarow--cell"><?= get_field('nagyszobak') ?> <?= get_field('felszobak')>0?' + '.get_field('felszobak'):'' ?></span>
+    <span class="datarow--cell"><?= get_field('tajolas') ?></span>
+    <?php if ( get_field('statusz') === 'free' ) : ?>
+      <span class="datarow--cell"><?= get_field('price') ?>m Ft</span>
     <?php else : ?>
-      <span class="datarow--cell"><i class="<?= get_field('statusz') ?>"></i><?= get_field('statusz') ?></span>
+      <span class="datarow--cell"><?= stateinfo(get_field('statusz')) ?></span>
     <?php endif; ?>
   </a>
 </p>

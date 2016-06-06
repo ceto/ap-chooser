@@ -14,13 +14,14 @@
   }
 ?>
 <main class='apc-ns' role="main">
-  <section class="choserblock" id="finndinbolig">
+  <section class="chooserblock" id="finndinbolig">
     <div class="thechooser">
       <?php
         $nezeti_kep = get_field('nezeti_kep', $aktblokk);
+        //var_dump($nezeti_kep['sizes']['apcfull-height']);
         if ( !empty($nezeti_kep) ): ?>
-          <div id="visualchooser" class="visualchooser" data-width="2600" data-height="1569">
-            <?= wp_get_attachment_image( $nezeti_kep['id'], 'full' ); ?>
+          <div id="visualchooser" class="visualchooser" data-width="<?= $nezeti_kep['sizes']['apcfull-width'] ?>" data-height="<?= $nezeti_kep['sizes']['apcfull-height'] ?>">
+            <?= wp_get_attachment_image( $nezeti_kep['id'], 'apcfull' ); ?>
           </div>
       <?php endif;?>
 
@@ -36,7 +37,10 @@
               </ul>
             <?php endif; ?>
 
-            <h1 class='apc-pageheader__title'><?= $aktblokk->name; ?></h1>
+            <h1 class="apc-pageheader__title" title="baazz sdalf"><?= $aktblokk->name; ?></h1>
+            <p>
+The <span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="false" tabindex="1" title="Fancy word for a beetle.">scarabaeus</span> hung quite clear of any branches, and, if allowed to fall, would have fallen at our feet. Legrand immediately took the scythe, and cleared with it a circular space, three or four yards in diameter, just beneath the insect, and, having accomplished this, ordered Jupiter to let go the string and come down from the tree.
+</p>
           </div>
         </div>
       </header>
@@ -59,14 +63,36 @@
             <?php if ($blokktype!='floor') : ?>
             <h2><a href="<?= get_term_link($term );  ?>"><?php echo $term->name;?></a></h2>
             <?php endif; ?>
+
+            <?php if ($blokktype=='root') : ?>
+              <ul class="floorlist">
+                <?php
+                  $the_floors = get_terms( array(
+                    'taxonomy' => 'blokk',
+                    'hide_empty' => false,
+                    'orderby' => 'slug',
+                    'taxonomy' => 'blokk',
+                    'parent'=> $term->term_id
+                  ));
+                  foreach ($the_floors as $key => $floor) :?>
+                   <li><a id="<?= $floor->slug ?>" class="datarow--floor"
+                     data-url="<?= get_term_link($floor);?>"
+                     data-svgdata="<?= get_field('svg_data', $floor) ?>"
+                     href="<?= get_term_link($floor);?>">
+                      <?= $floor->name;  ?>
+                   </a></li>
+                  <?php endforeach; ?>
+              </ul>
+            <?php endif; ?>
+
             <div class="datatable">
               <p class="datarow datatable--head">
                 <span class="datarow--cell">Lakás</span>
+                <span class="datarow--cell">Emelet</span>
                 <span class="datarow--cell">Alapterület</span>
                 <span class="datarow--cell">Szobák</span>
-                <span class="datarow--cell">Konyha</span>
-                <span class="datarow--cell">Étekző</span>
-                <span class="datarow--cell">Ár / Állapot</span>
+                <span class="datarow--cell">Tájolás</span>
+                <span class="datarow--cell">Ár</span>
               </p>
               <?php
                   $posts = get_posts(array(

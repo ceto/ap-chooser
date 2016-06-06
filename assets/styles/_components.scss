@@ -22,9 +22,11 @@
   margin:2em 0 4em 0;
   display:table;
   color:#777777;
+
   //border-collapse:collapse;
   border-collapse: separate;
-  border-spacing:0 .75em;
+  border-spacing:1px 1px;
+  //border:1px solid $medium-gray;
   width:100%;
   font-size:.875em;
   line-height:1;
@@ -36,11 +38,12 @@
 
 .datarow{
   display:table-row-group;
+  background-color: $white;
   &.datatable--head{
     display: table-row;
     .datarow--cell{
       font-weight: 700;
-      padding:.75em 0.666em;
+      padding:1.5em .666em 1em;
     }
   }
 }
@@ -52,21 +55,25 @@ a.datarow--link {
   transition:background-color .4s ease;
   text-decoration: none;
   &.active, &:hover, &:focus {
-    outline:1px solid currentColor;
+    outline:1px solid $light-green;
     text-decoration: none;
+    background-color: $extralight-green;
   }
 
 }
 
 .datarow--cell {
+  //border:1px solid $light-gray;
   position: relative;
   display:table-cell;
-  padding:.25em 0.125em .125em;
+  padding:.5em 0.125em;
   text-align:center;
+  font-size: .75rem;
   vertical-align: middle;
-  text-transform: uppercase;
+  //text-transform: uppercase;
 
   @include breakpoint('medium'){
-    padding:.5em 0.666em .5em;
+    padding:1em .666em;
+    font-size: .875rem;
   }
 }

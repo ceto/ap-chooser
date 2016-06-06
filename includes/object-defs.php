@@ -7,7 +7,7 @@ function delta_custom_post_types() {
   $labels = array(
     'name'                  => _x( 'Lakások', 'Member General Name', 'text_domain' ),
     'singular_name'         => _x( 'Lakás', 'Lakás Singular Name', 'text_domain' ),
-    'menu_name'             => __( 'Lakás választó', 'text_domain' ),
+    'menu_name'             => __( 'Lakások', 'text_domain' ),
     'name_admin_bar'        => __( 'Lakás', 'text_domain' ),
     'archives'              => __( 'Lakás Archives', 'text_domain' ),
     'parent_item_colon'     => __( 'Parent lakás:', 'text_domain' ),
@@ -35,7 +35,7 @@ function delta_custom_post_types() {
     'label'                 => __( 'Lakás', 'text_domain' ),
     'description'           => __( 'Lakás Description', 'text_domain' ),
     'labels'                => $labels,
-    'supports'              => array('title', 'editor', 'thumbnail', 'page-attributes'),
+    'supports'              => array('title', 'page-attributes'),
     'taxonomies'            => array(),
     'hierarchical'          => false,
     'public'                => true,

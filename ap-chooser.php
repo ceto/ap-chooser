@@ -9,6 +9,8 @@
   * Author URI: http://hydrogene.hu/
   **/
 
+  add_image_size( 'apcfull', 2500, 9000 );
+
   define( 'APC_PATH', plugin_dir_path( __FILE__ ) );
   define( 'APC_PATH_URI', plugin_dir_url( __FILE__ ) );
 
@@ -61,8 +63,51 @@ function lakas_archive_template($archive_template) {
 // Register styles & scripts sheet.
 function delta_register_apc_stuff() {
   wp_enqueue_style( 'apc-styles', APC_PATH_URI . 'dist/styles/ap-chooser.css' );
-  wp_enqueue_script( 'apc-scripts', APC_PATH_URI . 'dist/scripts/ap-chooser.js', array('jquery') );
+  wp_enqueue_script( 'apc-scripts', APC_PATH_URI . 'dist/scripts/ap-chooser.js', array('jquery'), '1.0', true );
 }
-add_action( 'wp_enqueue_scripts', 'delta_register_apc_stuff' );
+add_action( 'wp_enqueue_scripts', 'delta_register_apc_stuff', 9999 );
+
+function emeletinfo($lakas_id) {
+  $blocks=wp_get_post_terms($lakas_id, 'blokk', array('orderby' => 'id') );
+  return $blocks[2]->name;
+}
+
+function emeletslug($lakas_id) {
+  $blocks=wp_get_post_terms($lakas_id, 'blokk', array('orderby' => 'id') );
+  return $blocks[2]->slug;
+}
 
 
+function stateinfo($statusz) {
+  switch (variable) {
+    case 'reserved':
+      return 'Foglalt';
+      break;
+   case 'sold':
+    return 'Eladva';
+    break;
+    default:
+      return 'Szabad';
+      break;
+  }
+}
+
+
+
+
+
+
+
+
+function register_jquery() {
+  $jquery_version = wp_scripts()->registered['jquery']->ver;
+  wp_deregister_script('jquery');
+  wp_register_script(
+    'jquery',
+    APC_PATH_URI . 'bower_components/jquery/dist/jquery.min.js',
+    [],
+    null,
+    true
+  );
+}
+add_action('wp_enqueue_scripts', 'register_jquery', 100);

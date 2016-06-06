@@ -1,0 +1,49 @@
+.chooserblock {
+  background-color: $light-green;
+  overflow:hidden;
+}
+
+
+.visualchooser {
+  //height:75vh;
+  position:relative;
+  width:100%;
+  backface-visibility: hidden;
+  margin:0 auto;
+  //max-width: 1600px;
+
+  background-color: black;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: top center;
+  overflow:hidden;
+
+
+  svg,img {
+    display: block;
+  }
+
+  svg {
+    z-index:1;
+  }
+
+  img {
+    position: absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    z-index: 0;
+  }
+}
+
+
+
+
+
+/****** Single Lakas ****/
+
+.apc-infopanel {
+  background-color: $light-green;
+  padding:1rem;
+}
