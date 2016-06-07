@@ -20,7 +20,7 @@
         $nezeti_kep = get_field('nezeti_kep', $aktblokk);
         //var_dump($nezeti_kep['sizes']['apcfull-height']);
         if ( !empty($nezeti_kep) ): ?>
-          <div id="visualchooser" class="visualchooser" data-width="<?= $nezeti_kep['sizes']['apcfull-width'] ?>" data-height="<?= $nezeti_kep['sizes']['apcfull-height'] ?>">
+          <div id="visualchooser" class="visualchooser" data-width="<?= $nezeti_kep['sizes']['apcfull-width'] ?>" data-height="<?= $nezeti_kep['sizes']['apcfull-height']*1.5 ?>">
             <?= wp_get_attachment_image( $nezeti_kep['id'], 'apcfull' ); ?>
           </div>
       <?php endif;?>
@@ -39,7 +39,7 @@
 
             <h1 class="apc-pageheader__title" title="baazz sdalf"><?= $aktblokk->name; ?></h1>
             <p>
-The <span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="false" tabindex="1" title="Fancy word for a beetle.">scarabaeus</span> hung quite clear of any branches, and, if allowed to fall, would have fallen at our feet. Legrand immediately took the scythe, and cleared with it a circular space, three or four yards in diameter, just beneath the insect, and, having accomplished this, ordered Jupiter to let go the string and come down from the tree.
+The <span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="false" tabindex="1" title="<h3>Supports html</h3><p>Fancy word for a beetle.</p>">scarabaeus</span> hung quite clear of any branches, and, if allowed to fall, would have fallen at our feet. Legrand immediately took the scythe, and cleared with it a circular space, three or four yards in diameter, just beneath the insect, and, having accomplished this, ordered Jupiter to let go the string and come down from the tree.
 </p>
           </div>
         </div>
@@ -76,10 +76,11 @@ The <span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover="
                   ));
                   foreach ($the_floors as $key => $floor) :?>
                    <li><a id="<?= $floor->slug ?>" class="datarow--floor"
+                     data-building="<?= $term->name; ?>"
                      data-url="<?= get_term_link($floor);?>"
                      data-svgdata="<?= get_field('svg_data', $floor) ?>"
                      href="<?= get_term_link($floor);?>">
-                      <?= $floor->name;  ?>
+                      <?= $term->name; ?> - <?= $floor->name;  ?>
                    </a></li>
                   <?php endforeach; ?>
               </ul>

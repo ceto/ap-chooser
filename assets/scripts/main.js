@@ -13,6 +13,7 @@ jQuery(document).ready(function() {
     paper.setViewBox(0, 0, origwidth, origheight, true);
 
     var items = [];
+    var tiptops = [];
     var text ='';
 
     jQuery('.datarow--floor').each(function(index) {
@@ -26,17 +27,13 @@ jQuery(document).ready(function() {
 
       items[index].attr(
         {
-
-          fill: (menuitem.attr('data-state')==='free')?'#ffffff':(menuitem.attr('data-state')==='sold')?'#777777':'#555555',
-          //fill:'#555555',
-          opacity: (menuitem.attr('data-state')!=='fri')?0.5:0,
-          //opacity:1,
-          stroke: '#000',
+          'fill':'#555555',
+          'opacity':'1',
+          'stroke': '#000',
           'stroke-width': '0',
           'stroke-opacity': '100',
-          href:jQuery(this).attr('data-url'),
-          //title: text
-
+          //'href': jQuery(this).attr('data-url'),
+          //'title': jQuery(this).text()
         }
       );
 
@@ -47,9 +44,9 @@ jQuery(document).ready(function() {
 
 
 
-      items[index].click(function () {
-          window.location=(items[index].data('url'));
-      });
+      // items[index].click(function () {
+      //     window.location=(items[index].data('url'));
+      // });
 
 
       items[index].hover(
@@ -69,63 +66,48 @@ jQuery(document).ready(function() {
         }
       );
 
-      menuitem.hover(
-        function(){
-          items[index].attr(
-          {
-            opacity: (menuitem.attr('data-state')!=='fri')?0.75:0.5,
-          });
-        },
-        function(){
-            items[index].attr(
-            {
-              opacity: (menuitem.attr('data-state')!=='fri')?0.5:0,
-            });
-        }
-      );
 
+      // tiptops[index] = new Foundation.Tooltip( menuitem , {
+      //     tipText: function() {
+      //       $tiptext='<h1>' + jQuery('#va1').attr('id') + '</h1>';
+      //       return $tiptext;
+      //     },
+      //     positionClass: 'top'
+      // });
 
     });
 
-    // jQuery('path').tooltip({
-    //   container: '.visualchooser',
-    //   html:true,
-    //   placement:'auto top',
-    //   delay: { "show": 100, "hide": 0 },
-    //   title:function() {
-    //     var thedata=jQuery('#'+jQuery(this).attr('id').slice(1));
 
-    //     var noflat = thedata.attr('data-noflat');
-    //     var noflatfree = thedata.attr('data-noflatfree');
+    //**** Build Path tooltips
 
-    //     var name = thedata.attr('data-name');
-    //     var rom = thedata.attr('data-rom');
-    //     var floor = thedata.attr('data-floor');
-    //     var bra = thedata.attr('data-bra');
-    //     var bod = thedata.attr('data-bod');
-    //     var pris = thedata.attr('data-pris');
-    //     var state = thedata.attr('data-state');
-    //     var url = thedata.attr('data-url');
+    jQuery('path').each( function(index) {
+      //alert(jQuery(this).attr('id'));
+      var floorid=jQuery(this).attr('id').slice(1);
+      var floorname=jQuery('#'+floorid).text();
+      var localtable = '<div class="datatable localtable">';
+      localtable+=jQuery('.datatable--head').html();
+      jQuery('.datarow[data-emeletslug="'+ floorid +'"]').each( function(kisindex) {
+        localtable+=jQuery(this).html();
+      });
+      localtable+="</div>";
+      tiptops[index] = new Foundation.Tooltip( jQuery(this) , {
+          tipText: function() {
+            $tiptext='<h3>' + floorname + '</h3>';
+            $tiptext+=localtable;
+            return $tiptext;
+          },
+          positionClass: 'top',
+          hoverDelay: '50'
+      });
+    });
 
-    //     $tiptext='<p class="tooltip__item"><span>Leiglighet</span>'+name+'</p>';
-    //     $tiptext+='<p class="tooltip__item"><span>Rom</span>'+rom+'</p>';
-    //     $tiptext+='<p class="tooltip__item"><span>Etg</span>'+floor+'</p>';
-    //     $tiptext+='<p class="tooltip__item"><span>Bra</span>'+bra+'</p>';
 
 
-    //     if (state==='fri') {
-    //       $tiptext+='<p class="tooltip__item"><span>Pris</span>'+pris+'</p>';
-    //     }
-    //     if(state!=='fri') {
-    //       $tiptext+='<p class="tooltip__item"><span>Status</span>'+state+'</p>';
-    //     }
-    //     return $tiptext;
-    //   }
-    // });
+
 
   }
 
-    if ( jQuery('.visualchooser').length > 0 ) {
+  if ( jQuery('.visualchooser').length > 0 ) {
       var szelesseg = jQuery('.visualchooser').width();
       var origwidth=jQuery('.visualchooser').attr('data-width');
       var origheight=jQuery('.visualchooser').attr('data-height');
@@ -136,8 +118,13 @@ jQuery(document).ready(function() {
       jQuery(window).resize(redraw_canvas);
     }
 
+
+    function choosertooltip(theid) {
+      return '<h3>'+ theid +'</h3><p>Lorem ipsum dolor sit amet</p>';
+    }
+
     var $tooltipelem = new Foundation.Tooltip( jQuery('.apc-pageheader__title') , {
-       tipText: 'Fasza tolltip',
+      tipText: choosertooltip( jQuery('.apc-pageheader__title').attr('title'))
     });
 
     jQuery('.apc-pageheader__title').foundation('show');

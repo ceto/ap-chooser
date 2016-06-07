@@ -1,4 +1,4 @@
-<p class="datarow">
+<p class="datarow" data-emeletslug="<?= emeletslug(get_the_ID()) ?>">
   <a id="ap-<?= get_the_ID();  ?>" class="datarow--link statusz-<?= get_field('statusz'); ?>" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"
   data-name="<?php the_title(); ?>"
   data-alapterulet="<?= get_field('alapterulet') ?>"

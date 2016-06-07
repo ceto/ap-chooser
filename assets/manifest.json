@@ -2,6 +2,7 @@
   "dependencies": {
     "ap-chooser.js": {
       "files": [
+        "scripts/plugins/foundation.tooltip.js",
         "scripts/main.js"
       ],
       "main": true

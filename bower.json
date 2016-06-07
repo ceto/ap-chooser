@@ -17,8 +17,7 @@
         "dist/plugins/foundation.core.js",
         "dist/plugins/foundation.util.mediaQuery.js",
         "dist/plugins/foundation.util.box.js",
-        "dist/plugins/foundation.util.triggers.js",
-        "dist/plugins/foundation.tooltip.js"
+        "dist/plugins/foundation.util.triggers.js"
       ]
     }
   }
