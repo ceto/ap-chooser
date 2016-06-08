@@ -27,9 +27,9 @@ jQuery(document).ready(function() {
 
       items[index].attr(
         {
-          'fill':'#555555',
-          'opacity':'1',
-          'stroke': '#000',
+          'fill':'#f1f6f2',
+          'opacity':'0',
+          'stroke': '#cacaca',
           'stroke-width': '0',
           'stroke-opacity': '100',
           //'href': jQuery(this).attr('data-url'),
@@ -44,27 +44,33 @@ jQuery(document).ready(function() {
 
 
 
-      // items[index].click(function () {
-      //     window.location=(items[index].data('url'));
-      // });
+      items[index].click(function () {
+        //window.location=(items[index].data('url'));
+        //jQuery('path').removeClass('is_selected');
+        //jQuery('#' + items[index].node.id).toggleClass('is_selected');
+        // items[index].attr(
+        //   {
+        //     'opacity': '0.75',
+        //     'stroke-width': '1',
+        // });
+      });
 
 
-      items[index].hover(
-        function(event){
-          items[index].attr(
-          {
-            opacity: (menuitem.attr('data-state')!=='fri')?0.75:0.5,
-          });
-          menuitem.toggleClass('active');
-        },
-        function(){
-          items[index].attr(
-          {
-            opacity: (menuitem.attr('data-state')!=='fri')?0.5:0,
-          });
-          menuitem.toggleClass('active');
-        }
-      );
+      // items[index].hover(
+      //   function(event){
+      //     //jQuery('path').removeClass('is_selected');
+      //     items[index].attr(
+      //     {
+      //       opacity: 0.666,
+      //     });
+      //   },
+      //   function(){
+      //     items[index].attr(
+      //     {
+      //       opacity: 0,
+      //     });
+      //   }
+      // );
 
 
       // tiptops[index] = new Foundation.Tooltip( menuitem , {
@@ -96,14 +102,10 @@ jQuery(document).ready(function() {
             $tiptext+=localtable;
             return $tiptext;
           },
-          positionClass: 'top',
-          hoverDelay: '50'
+          positionClass: 'bottom',
+          hoverDelay: '100'
       });
     });
-
-
-
-
 
   }
 
@@ -118,16 +120,34 @@ jQuery(document).ready(function() {
       jQuery(window).resize(redraw_canvas);
     }
 
-
-    function choosertooltip(theid) {
-      return '<h3>'+ theid +'</h3><p>Lorem ipsum dolor sit amet</p>';
-    }
-
-    var $tooltipelem = new Foundation.Tooltip( jQuery('.apc-pageheader__title') , {
-      tipText: choosertooltip( jQuery('.apc-pageheader__title').attr('title'))
+    jQuery('path').on('focusout', function(e){
+      jQuery(this).removeClass('is_selected');
     });
 
-    jQuery('.apc-pageheader__title').foundation('show');
+    jQuery('path').on('click', function(e){
+      if (jQuery(this).hasClass('is_selected')) {
+        jQuery(this).blur();
+      } else {
+        jQuery(this).addClass('is_selected');
+      }
+    });
+
+
+    // $('#csiki').on('click', function(e) {
+    //   e.preventDefault();
+    //    $('.accordion').foundation('toggle');
+    // });
+
+
+    // function choosertooltip(theid) {
+    //   return '<h3>'+ theid +'</h3><p>Lorem ipsum dolor sit amet</p>';
+    // }
+
+    // var $tooltipelem = new Foundation.Tooltip( jQuery('.apc-pageheader__title') , {
+    //   tipText: choosertooltip( jQuery('.apc-pageheader__title').attr('title'))
+    // });
+
+    // jQuery('.apc-pageheader__title').foundation('show');
 
   });
 

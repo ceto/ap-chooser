@@ -4,7 +4,6 @@
 ?>
 <?php while (have_posts()) : the_post(); ?>
   <main class='apc-ns' role="main">
-
     <?php $blokklist = wp_get_post_terms($post->ID, 'blokk', array('orderby' => 'id', 'order' => 'ASC')); ?>
     <header class="apc-pageheader">
       <div class="row">
@@ -14,12 +13,12 @@
               <li><a href="<?php echo get_term_link( $blokkitem ); ?>"><?php echo $blokkitem->name; ?></a></li>
             <?php endforeach; ?>
           </ul>
-          <h1 class='apc-pageheader__title'><?php the_title(); ?></h1>
+          <h1 class='apc-pageheader__title'><?php the_title(); ?> lakás</h1>
         </div>
       </div>
     </header>
     <div class="row">
-      <div class="columns medium-6 large-8">
+      <div class="columns medium-7 large-8">
         <?php
           $alaprajz = get_field('szines_alaprajz');
           if ( !empty($alaprajz) ): ?>
@@ -31,7 +30,7 @@
         <?php endif;?>
       </div>
 
-      <div class="columns medium-6 large-4">
+      <div class="columns medium-5 large-4">
         <?php
           $blockmap = get_field('tomb_terkep');
           if ( !empty($blockmap) ): ?>
@@ -45,9 +44,12 @@
         <section class="apc-infopanel">
           <h2>Adatlap</h2>
           <dl class="apc-paramlist">
-            <?php if ( get_field('alapterulet') ) : ?>
-              <dt class="apc-featlistitem">Alapterület</dt><dd class="apc-featlistitem"><?= get_field('alapterulet') ?>m<sup>2</sup></dd>
-            <?php endif; ?>
+            <dt class="apc-featlistitem">Alapterület</dt><dd class="apc-featlistitem"><?= get_field('alapterulet') ?>m<sup>2</sup></dd>
+            <dt class="apc-featlistitem">Szobák száma</dt><dd class="apc-featlistitem"><?= get_field('nagyszobak') ?> <?= get_field('felszobak')>0?' + '.get_field('felszobak'):'' ?></dd>
+            <dt class="apc-featlistitem">Tájolás</dt><dd class="apc-featlistitem"><?= get_field('tajolas') ?></dd>
+          </dl>
+          <hr>
+          <dl class="apc-paramlist">
             <?php if ( get_field('kozlekedo') ) : ?>
               <dt>Közlekedő</dt><dd><?= get_field('kozlekedo') ?>m<sup>2</sup></dd>
             <?php endif; ?>
@@ -98,8 +100,10 @@
               <dt>Loggia</dt><dd><?= get_field('loggia') ?>m<sup>2</sup></dd>
             <?php endif; ?>
           </dl>
-          <hr>
-          <a class="button" href="tel:1123412">Részletek: +36 (1) 398 4589</a> <a class="button secondary" href="#">Alaprajz (PDF)</a>
+          <div class="apc-infopanel__actions">
+            <a class="button small" href="tel:1123412">Részletek: +36 (1) 398 4589</a> <a class="button small secondary" href="#">Alaprajz (PDF)</a>
+          </div>
+
         </section>
       </div>
 

@@ -1,6 +1,6 @@
 .apc-pageheader {
-  padding-top: 5vh;
-  padding-bottom: 5vh;
+  padding-top: 6vh;
+  padding-bottom: 6vh;
 }
 .apc-pageheader__title {
   margin-bottom: 0;
@@ -18,8 +18,14 @@
 
 
 /****************** Data Table Styles **************/
+.accordion {
+  margin:0;
+}
+.tabletitle {
+  text-align: center;
+}
 .datatable {
-  margin:2em 0 4em 0;
+  margin:2rem 0 5rem 0;
   display:table;
   color:#777777;
 
@@ -58,6 +64,10 @@ a.datarow--link {
     outline:1px solid $light-green;
     text-decoration: none;
     background-color: $extralight-green;
+
+    .tooltip & {
+      outline:1px solid $medium-gray;
+    }
   }
 
 }
@@ -77,7 +87,7 @@ a.datarow--link {
     font-size: .875rem;
   }
 
-  .tooltip &:nth-of-type(1), .tooltip &:nth-of-type(2) {
+  .tooltip &:nth-of-type(2) {
     display: none;
   }
 }

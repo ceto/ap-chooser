@@ -38,14 +38,24 @@
     height:100%;
     z-index: 0;
   }
+
+  path:hover {
+    opacity: .5!important;
+  }
+  path.is_selected {
+    stroke-width:1 !important;
+    opacity:.75 !important;
+  }
 }
 
 
 .tooltip {
 
-  min-width: 25%;
-  @include breakpoint('medium') {
-      max-width: 33.333% !important;
+  min-width: 22rem;
+  @include breakpoint('large') {
+    min-width: 25%;
+    max-width: 33.333% !important;
+    padding:1% 1.5%;
   }
 
   h3 {
@@ -55,7 +65,7 @@
     //border-bottom:1px solid $green;
   }
   .datatable {
-    margin:0;
+    margin:0 0 .5rem;
   }
   .datarow--cell {
     font-size: .75rem;
@@ -65,9 +75,86 @@
 }
 
 
+.chooserhelper {
+  position: absolute;
+  left:0;
+  bottom:0;
+  width:100%;
+  z-index: 2;
+  color:$white;
+  h2 {
+    font-size: 2.5vw;
+    margin-bottom: .5rem;
+  }
+  p {
+    margin-top: 0;
+  }
+
+  .button {
+    float:right;
+  }
+}
+.floorlist {
+  display: none;
+  opacity: 0;
+}
+
+
 /****** Single Lakas ****/
+
+.single-lakas .apc-ns {
+  width:96%;
+  margin:0 auto;
+}
+.apc-pageheader {
+  text-align: center;
+  .breadcrumbs {
+    display: inline-block;
+    margin-bottom: .5rem;
+  }
+}
+.apc-pageheader__title {
+  margin:0;
+}
+
+.apc-alaprajz {
+ margin:0 0 4rem;
+ text-align: center;
+}
+
+.apc-blockmap {
+  margin:0;
+  text-align: center;
+}
 
 .apc-infopanel {
   background-color: $light-green;
-  padding:1rem;
+  padding:10% 9% 7%;
+  margin:4rem 0;
+  hr {
+    margin:1rem 0;
+  }
+}
+
+.apc-paramlist {
+  @include clearfix();
+  margin: 1rem 0;
+  dt, dd {
+    padding:.25rem 0;
+  }
+  dd {
+    float:right;
+  }
+  .apc-featlistitem {
+    font-weight: $global-weight-bold;
+  }
+}
+
+.apc-infopanel__actions {
+  @include clearfix();
+  //text-align: right;
+  margin-top: 2rem;
+  .button:nth-of-type(2) {
+    float:right;
+  }
 }
