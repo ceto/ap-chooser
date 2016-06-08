@@ -26,7 +26,7 @@
               <div class="row">
                 <div class="columns small-8">
                   <h2>Virtuális lakásválasztó</h2>
-                  <p>Klikkeljen az épületek szintjeire</p>
+                  <p>Lakás kiválasztásához klikkeljen az épületek szintjeire</p>
                 </div>
                 <div class="columns small-4 text-right">
                   <button class="button small" data-toggle="fulllist">Mutasd az összes lakást</button>

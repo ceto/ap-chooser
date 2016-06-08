@@ -13,10 +13,25 @@
     }
   }
   dd {
+    a {
+      color:$dark-gray;
+      display: inline-block;
+      &:hover, &:focus {
+        text-decoration: none;
+        color:$green;
+      }
+    }
   }
 }
 
+.listapista {
 
+  a:not(:last-child) {
+    &:after {
+      content:' | ';
+    }
+  }
+}
 /****************** Data Table Styles **************/
 .accordion {
   margin:0;

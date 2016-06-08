@@ -100,6 +100,19 @@
               <dt>Loggia</dt><dd><?= get_field('loggia') ?>m<sup>2</sup></dd>
             <?php endif; ?>
           </dl>
+          <hr>
+          <dl class="apc-paramlist apc-paramlist--secondary">
+            <?php if ( $post_objects = get_field('hasonlo_lakasok') ) : ?>
+              <dt>Hasonló lakások</dt>
+              <dd class="listapista">
+                <?php foreach( $post_objects as $post_object): ?>
+                  <a href="<?php echo get_permalink($post_object->ID); ?>"><?php echo get_the_title($post_object->ID); ?></a>
+                <?php endforeach; ?>
+
+              </dd>
+            <?php endif; ?>
+          </dl>
+
           <div class="apc-infopanel__actions">
             <a class="button small" href="tel:1123412">Részletek: +36 (1) 398 4589</a> <a class="button small secondary" href="#">Alaprajz (PDF)</a>
           </div>
