@@ -21,7 +21,9 @@
         "dist/plugins/foundation.util.keyboard.js",
         "dist/plugins/foundation.util.motion.js",
         "dist/plugins/foundation.accordion.js",
-        "dist/plugins/foundation.toggler.js"
+        "dist/plugins/foundation.toggler.js",
+        "dist/plugins/foundation.magellan.js",
+        "dist/plugins/foundation.reveal.js"
       ]
     }
   }

@@ -14,6 +14,7 @@ jQuery(document).ready(function() {
 
     var items = [];
     var tiptops = [];
+    var modals = [];
     var text ='';
 
     jQuery('.datarow--floor').each(function(index) {
@@ -32,7 +33,7 @@ jQuery(document).ready(function() {
           'stroke': '#cacaca',
           'stroke-width': '0',
           'stroke-opacity': '100',
-          //'href': jQuery(this).attr('data-url'),
+          'href': '#floorModal'+jQuery(this).attr('id'),
           //'title': jQuery(this).text()
         }
       );
@@ -96,18 +97,25 @@ jQuery(document).ready(function() {
         localtable+=jQuery(this).html();
       });
       localtable+="</div>";
-      tiptops[index] = new Foundation.Tooltip( jQuery(this) , {
+      $('#floorModal'+floorid).append(localtable);
+      tiptops[index] = new Foundation.Tooltip( jQuery(this).parent() , {
           tipText: function() {
             $tiptext='<h3>' + floorname + '</h3>';
             $tiptext+=localtable;
+            $tiptext+='<a href="#floorModal'+ floorid + '" class="button expanded" data-open="floorModal'+ floorid + '">Mutasd a szintrajzot</a>';
             return $tiptext;
           },
-          positionClass: 'bottom',
-          hoverDelay: '100'
+          //disableHover:true,
+          fadeOutDuration: 300,
+          fadeInDuration: 0,
+          hoverDelay: 300,
+          positionClass: 'bottom'
+
       });
     });
 
-  }
+
+  } //end of redraw_canvas
 
   if ( jQuery('.visualchooser').length > 0 ) {
       var szelesseg = jQuery('.visualchooser').width();
@@ -120,23 +128,47 @@ jQuery(document).ready(function() {
       jQuery(window).resize(redraw_canvas);
     }
 
+    jQuery('.tooltip').on('mouseenter', function() {
+      jQuery('[data-toggle="'+jQuery(this).attr('id')+'"]').focus().addClass('is_selected');
+      jQuery('[data-toggle="'+jQuery(this).attr('id')+'"]').foundation('show');
+    }).on('mouseleave', function() {
+      jQuery('[data-toggle="'+jQuery(this).attr('id')+'"]').blur().removeClass('is_selected');
+      jQuery('[data-toggle="'+jQuery(this).attr('id')+'"]').foundation('hide');
+    });
     jQuery('path').on('focusout', function(e){
-      jQuery(this).removeClass('is_selected');
+      //jQuery(this).removeClass('is_selected');
     });
 
-    jQuery('path').on('click', function(e){
-      if (jQuery(this).hasClass('is_selected')) {
-        jQuery(this).blur();
-      } else {
-        jQuery(this).addClass('is_selected');
-      }
+    jQuery('path').on('mouseenter', function(e){
+
+    }).on('mouseleave', function(e){
+
     });
 
-
-    // $('#csiki').on('click', function(e) {
-    //   e.preventDefault();
-    //    $('.accordion').foundation('toggle');
+    // jQuery('path').on('click', function(e){
+    //   if (jQuery(this).hasClass('is_selected')) {
+    //     jQuery(this).removeClass('is_selected');
+    //   } else {
+    //     jQuery(this).addClass('is_selected');
+    //   }
     // });
+
+
+    jQuery('svg a').on('click', function(e) {
+      e.preventDefault();
+      jQuery(jQuery(this).attr('href')).foundation('open');
+
+    });
+
+    jQuery('.csiki').on('click', function(e) {
+      e.preventDefault();
+      jQuery('#fulllist').removeClass('is-hidden');
+      //jQuery('.chooserhelper').foundation('scrollToLoc', '#filllist');
+
+    });
+
+
+
 
 
     // function choosertooltip(theid) {

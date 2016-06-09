@@ -22,14 +22,14 @@
           <div id="visualchooser" class="visualchooser" data-width="<?= $nezeti_kep['sizes']['apcfull-width'] ?>" data-height="<?= $nezeti_kep['sizes']['apcfull-height'] ?>">
             <?= wp_get_attachment_image( $nezeti_kep['id'], 'apcfull' ); ?>
 
-            <div class="chooserhelper">
+            <div class="chooserhelper" data-magellan>
               <div class="row">
                 <div class="columns small-8">
                   <h2>Virtuális lakásválasztó</h2>
                   <p>Lakás kiválasztásához klikkeljen az épületek szintjeire</p>
                 </div>
-                <div class="columns small-4 text-right">
-                  <button class="button small" data-toggle="fulllist">Mutasd az összes lakást</button>
+                <div class="columns small-4 text-right" >
+                  <a href="#fulllist" class="csiki button">Mutasd az összes lakást</a>
                 </div>
               </div>
             </div>
@@ -38,7 +38,7 @@
 
 
 
-      <section id="fulllist" class="fulllist is-hidden" data-toggler="is-hidden">
+      <section id="fulllist" class="fulllist is-hidden"  data-magellan-target="fulllist">
 
         <header class="apc-pageheader">
           <div class="row">
@@ -95,6 +95,23 @@
                      </a></li>
                     <?php endforeach; ?>
                 </ul>
+
+                <?php
+                  foreach ($the_floors as $key => $floor) :?>
+                     <div class="reveal" id="floorModal<?= $floor->slug ?>" data-reveal>
+                      <h3><?= $term->name; ?>: <?= $floor->name;  ?></h3>
+                      <?php
+                        $floormap = get_field('nezeti_kep', $floor);
+                        if ( !empty($floormap) ): ?>
+                          <figure class="apc-blockmap">
+                            <?= wp_get_attachment_image( $floormap['id'], 'large' ); ?>
+                          </figure>
+                      <?php endif;?>
+                       <button class="close-button" data-close aria-label="Close modal" type="button">
+                        <span aria-hidden="true">&times;</span>
+                       </button>
+                    </div>
+                <?php endforeach; ?>
               <?php endif; ?>
 
               <div class="datatable">

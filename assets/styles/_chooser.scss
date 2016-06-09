@@ -39,12 +39,20 @@
     z-index: 0;
   }
 
-  path:hover {
-    opacity: .5!important;
+  path {
+    transition: all .2s ease .50ms;
   }
-  path.is_selected {
-    stroke-width:1 !important;
-    opacity:.75 !important;
+  a:hover path{
+    opacity: .5!important;
+    //transition: all .50ms ease .2s;
+  }
+  a.is_selected path {
+    //stroke-width:1 !important;
+    opacity:.5 !important;
+  }
+
+  a:focus path {
+    opacity:.5 !important;
   }
 }
 
@@ -61,8 +69,13 @@
   h3 {
     padding:.75rem .5rem .5rem;
     margin:0 0 .5rem;
-    font-size: 1rem;
+    font-size: 1.25rem;
+    text-align: center;
     //border-bottom:1px solid $green;
+  }
+  .button {
+    margin-top: .875rem;
+    margin-bottom: 0;
   }
   .datatable {
     margin:0 0 .5rem;
@@ -70,7 +83,17 @@
   .datarow--cell {
     font-size: .75rem;
     padding:.5rem;
-    text-align: left;
+    //text-align: left;
+  }
+}
+
+.reveal {
+  h3 {
+    text-align: center;
+    margin: 1rem 0 2rem 0;
+  }
+  .datatable {
+    background-color:$white;
   }
 }
 
