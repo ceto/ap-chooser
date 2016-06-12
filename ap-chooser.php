@@ -78,7 +78,7 @@ function register_jquery() {
     wp_deregister_script('jquery');
     wp_register_script(
       'jquery',
-      APC_PATH_URI . 'bower_components/jquery/dist/jquery.min.js',
+      APC_PATH_URI . 'dist/scripts/jquery.js',
       array(),
       null,
       true
