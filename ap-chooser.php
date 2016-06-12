@@ -73,13 +73,13 @@ add_action( 'wp_enqueue_scripts', 'delta_register_apc_stuff', 9999 );
 
 
 function register_jquery() {
-  if (is_tax('blokk') || is_singular('lakas')) {
+  if ( is_tax('blokk') || is_singular('lakas') ) {
     $jquery_version = wp_scripts()->registered['jquery']->ver;
     wp_deregister_script('jquery');
     wp_register_script(
       'jquery',
       APC_PATH_URI . 'bower_components/jquery/dist/jquery.min.js',
-      [],
+      array(),
       null,
       true
     );
