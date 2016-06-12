@@ -45,7 +45,7 @@
           <h2>Adatlap</h2>
           <dl class="apc-paramlist">
             <dt class="apc-featlistitem">Alapterület</dt><dd class="apc-featlistitem"><?= get_field('alapterulet') ?>m<sup>2</sup></dd>
-            <dt class="apc-featlistitem">Szobák száma</dt><dd class="apc-featlistitem"><?= get_field('nagyszobak') ?> <?= get_field('felszobak')>0?' + '.get_field('felszobak'):'' ?></dd>
+            <dt class="apc-featlistitem">Szobák száma</dt><dd class="apc-featlistitem"><?= get_field('nagyszobak') ?><?= get_field('felszobak')>0?'+'.get_field('felszobak'):'' ?></dd>
             <dt class="apc-featlistitem">Tájolás</dt><dd class="apc-featlistitem"><?= get_field('tajolas') ?></dd>
           </dl>
           <hr>
@@ -114,7 +114,10 @@
           </dl>
 
           <div class="apc-infopanel__actions">
-            <a class="button small" href="tel:1123412">Részletek: +36 (1) 398 4589</a> <a class="button small secondary" href="#">Alaprajz (PDF)</a>
+            <a class="button small" href="tel:1123412">Részletek: +36 (1) 398 4589</a>
+            <?php if ( $file = get_field('csatolmany')) : ?>
+            <a class="button small secondary" href="<?= $file['url']  ?>">Alaprajz (PDF)</a>
+            <?php endif; ?>
           </div>
 
         </section>

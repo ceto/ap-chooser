@@ -14,11 +14,11 @@
   }
 ?>
 <main class='apc-ns' role="main">
-  <section class="chooserblock" id="finndinbolig">
+  <section class="chooserblock">
     <div class="thechooser">
       <?php
         $nezeti_kep = get_field('nezeti_kep', $aktblokk);
-        if ( !empty($nezeti_kep) ): ?>
+        if ( $blokktype!=='building' && !empty($nezeti_kep) ): ?>
           <div id="visualchooser" class="visualchooser" data-width="<?= $nezeti_kep['sizes']['apcfull-width'] ?>" data-height="<?= $nezeti_kep['sizes']['apcfull-height'] ?>">
             <?= wp_get_attachment_image( $nezeti_kep['id'], 'apcfull' ); ?>
 
@@ -38,7 +38,7 @@
 
 
 
-      <section id="fulllist" class="fulllist is-hidden"  data-magellan-target="fulllist">
+      <section id="fulllist" class="fulllist <?= ($blokktype!=='building')?'is-hidden':'';  ?>"  data-magellan-target="fulllist">
 
         <header class="apc-pageheader">
           <div class="row">

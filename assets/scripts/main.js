@@ -162,7 +162,7 @@ jQuery(document).ready(function() {
 
     jQuery('.csiki').on('click', function(e) {
       e.preventDefault();
-      jQuery('#fulllist').removeClass('is-hidden');
+      jQuery('#fulllist').toggleClass('is-hidden');
       //jQuery('.chooserhelper').foundation('scrollToLoc', '#filllist');
 
     });

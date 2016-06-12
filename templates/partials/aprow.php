@@ -14,7 +14,7 @@
     <span class="datarow--cell"><?php the_title(); ?></span>
     <span class="datarow--cell"><?= emeletinfo(get_the_ID()) ?></span>
     <span class="datarow--cell"><?= get_field('alapterulet') ?>m<sup>2</sup></span>
-    <span class="datarow--cell"><?= get_field('nagyszobak') ?> <?= get_field('felszobak')>0?' + '.get_field('felszobak'):'' ?></span>
+    <span class="datarow--cell"><?= get_field('nagyszobak') ?><?= get_field('felszobak')>0?'+'.get_field('felszobak'):'' ?></span>
     <span class="datarow--cell"><?= get_field('tajolas') ?></span>
     <?php if ( get_field('statusz') === 'free' ) : ?>
       <span class="datarow--cell"><?= get_field('price') ?>m Ft</span>

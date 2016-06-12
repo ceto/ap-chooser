@@ -36,7 +36,7 @@
   include_once( APC_PATH . '/includes/object-defs.php');
 
   //ACF Metaboxes
-  //include_once( APC_PATH  . '/includes/acf-fields.php' );
+  include_once( APC_PATH  . '/includes/acf-fields.php' );
 
 
 
@@ -62,10 +62,30 @@ function lakas_archive_template($archive_template) {
 
 // Register styles & scripts sheet.
 function delta_register_apc_stuff() {
+  if (is_tax('blokk') || is_singular('lakas')) {
+
   wp_enqueue_style( 'apc-styles', APC_PATH_URI . 'dist/styles/ap-chooser.css' );
   wp_enqueue_script( 'apc-scripts', APC_PATH_URI . 'dist/scripts/ap-chooser.js', array('jquery'), '1.0', true );
+  }
 }
 add_action( 'wp_enqueue_scripts', 'delta_register_apc_stuff', 9999 );
+
+
+
+function register_jquery() {
+  if (is_tax('blokk') || is_singular('lakas')) {
+    $jquery_version = wp_scripts()->registered['jquery']->ver;
+    wp_deregister_script('jquery');
+    wp_register_script(
+      'jquery',
+      APC_PATH_URI . 'bower_components/jquery/dist/jquery.min.js',
+      [],
+      null,
+      true
+    );
+  }
+}
+add_action('wp_enqueue_scripts', 'register_jquery', 100);
 
 function emeletinfo($lakas_id) {
   $blocks=wp_get_post_terms($lakas_id, 'blokk', array('orderby' => 'id') );
@@ -98,16 +118,3 @@ function stateinfo($statusz) {
 
 
 
-
-function register_jquery() {
-  $jquery_version = wp_scripts()->registered['jquery']->ver;
-  wp_deregister_script('jquery');
-  wp_register_script(
-    'jquery',
-    APC_PATH_URI . 'bower_components/jquery/dist/jquery.min.js',
-    [],
-    null,
-    true
-  );
-}
-add_action('wp_enqueue_scripts', 'register_jquery', 100);
