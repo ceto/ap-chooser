@@ -91,10 +91,11 @@ jQuery(document).ready(function() {
       //alert(jQuery(this).attr('id'));
       var floorid=jQuery(this).attr('id').slice(1);
       var floorname=jQuery('#'+floorid).text();
-      var localtable = '<div class="datatable localtable">';
+      var localtable = '<div class="datatable localtable"><p class="datarow datatable--head">';
       localtable+=jQuery('.datatable--head').html();
+      localtable+='</p>';
       jQuery('.datarow[data-emeletslug="'+ floorid +'"]').each( function(kisindex) {
-        localtable+=jQuery(this).html();
+        localtable+='<p class="datarow">'+jQuery(this).html()+'</p>';
       });
       localtable+="</div>";
       $('#floorModal'+floorid).append(localtable);

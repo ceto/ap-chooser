@@ -6,7 +6,7 @@
   data-konyha="<?= get_field('konyha') ?>"
   data-szobak="<?= count(get_field('szobak')) ?>"
   data-pris="<?= get_field('pris') ?>"
-  data-statsuz="<?= get_field('statusz') ?>"
+  data-statusz="<?= get_field('statusz') ?>"
   data-svgdata="<?= get_field('svg_data') ?>"
   data-url="<?php the_permalink(); ?>"
   data-emeletslug="<?= emeletslug(get_the_ID()) ?>"
@@ -15,9 +15,10 @@
     <span class="datarow--cell"><?= emeletinfo(get_the_ID()) ?></span>
     <span class="datarow--cell"><?= get_field('alapterulet') ?>m<sup>2</sup></span>
     <span class="datarow--cell"><?= get_field('nagyszobak') ?><?= get_field('felszobak')>0?'+'.get_field('felszobak'):'' ?></span>
+    <span class="datarow--cell"><?= get_field('erkely')>0?get_field('erkely'):'-' ?><?= get_field('terasz')>0?' / '.get_field('terasz'):' / -' ?></span>
     <span class="datarow--cell"><?= get_field('tajolas') ?></span>
     <?php if ( get_field('statusz') === 'free' ) : ?>
-      <span class="datarow--cell"><?= get_field('price') ?>m Ft</span>
+      <span class="datarow--cell"><strong><?= get_field('price') ?> M</strong></span>
     <?php else : ?>
       <span class="datarow--cell"><?= stateinfo(get_field('statusz')) ?></span>
     <?php endif; ?>

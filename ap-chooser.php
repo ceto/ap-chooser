@@ -76,12 +76,19 @@ function register_jquery() {
   if ( is_tax('blokk') || is_singular('lakas') ) {
     $jquery_version = wp_scripts()->registered['jquery']->ver;
     wp_deregister_script('jquery');
+    // wp_deregister_script('avia-compat');
+    // wp_deregister_script('avia-default');
+    // wp_deregister_script('avia-shortcodes');
+    // wp_deregister_script('avia-popup');
+    // wp_deregister_script('wp-mediaelement');
+
+
     wp_register_script(
       'jquery',
       APC_PATH_URI . 'dist/scripts/jquery.js',
       array(),
       null,
-      true
+      false
     );
   }
 }
@@ -99,12 +106,12 @@ function emeletslug($lakas_id) {
 
 
 function stateinfo($statusz) {
-  switch (variable) {
+  switch ($statusz) {
     case 'reserved':
-      return 'Foglalt';
+      return '<span class="label warning">Foglalt</span>';
       break;
    case 'sold':
-    return 'Eladva';
+    return '<span class="label alert">Eladva</span>';
     break;
     default:
       return 'Szabad';

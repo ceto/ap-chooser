@@ -1,3 +1,7 @@
+.button {
+  border-bottom:1px solid $dark-green;
+  font-weight:bold;
+}
 .apc-pageheader {
   padding-top: 6vh;
   padding-bottom: 6vh;
@@ -96,6 +100,9 @@ a.datarow--link {
   font-size: .75rem;
   vertical-align: middle;
   //text-transform: uppercase;
+  strong {
+
+  }
 
   @include breakpoint('medium'){
     padding:1em .666em;

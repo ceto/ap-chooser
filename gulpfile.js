@@ -112,7 +112,7 @@ var cssTasks = function(filename) {
     })
     .pipe(function() {
       return gulpif(enabled.maps, sourcemaps.write('.', {
-        sourceRoot: 'assets/styles/'
+        sourceRoot: '/'
       }));
     })();
 };

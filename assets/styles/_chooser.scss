@@ -24,7 +24,7 @@
   }
 
   svg {
-    z-index:1;
+    z-index:3;
     path {
       outline:none;
     }
@@ -97,6 +97,15 @@
   }
 }
 
+.csiki {
+  position: absolute;
+  top:2vw;
+  right:2vw;
+  z-index:3;
+  border-bottom: none;
+
+}
+
 
 .chooserhelper {
   position: absolute;
@@ -115,6 +124,9 @@
 
   .button {
     float:right;
+  }
+  > .row {
+    margin-bottom: 2.5vw;
   }
 }
 .floorlist {

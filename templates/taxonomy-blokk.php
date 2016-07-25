@@ -21,15 +21,14 @@
         if ( $blokktype!=='building' && !empty($nezeti_kep) ): ?>
           <div id="visualchooser" class="visualchooser" data-width="<?= $nezeti_kep['sizes']['apcfull-width'] ?>" data-height="<?= $nezeti_kep['sizes']['apcfull-height'] ?>">
             <?= wp_get_attachment_image( $nezeti_kep['id'], 'apcfull' ); ?>
-
+            <div data-magellan>
+              <a href="#fulllist"  class="csiki alert button">Mutasd az összes lakást</a>
+            </div>
             <div class="chooserhelper" data-magellan>
               <div class="row">
-                <div class="columns small-8">
+                <div class="columns tablet-8">
                   <h2>Virtuális lakásválasztó</h2>
                   <p>Lakás kiválasztásához klikkeljen az épületek szintjeire</p>
-                </div>
-                <div class="columns small-4 text-right" >
-                  <a href="#fulllist" class="csiki button">Mutasd az összes lakást</a>
                 </div>
               </div>
             </div>
@@ -120,8 +119,9 @@
                   <span class="datarow--cell">Emelet</span>
                   <span class="datarow--cell">Alapterület</span>
                   <span class="datarow--cell">Szobák</span>
+                  <span class="datarow--cell">Erkély/Terasz</span>
                   <span class="datarow--cell">Tájolás</span>
-                  <span class="datarow--cell">Ár</span>
+                  <span class="datarow--cell">Ár (Ft)</span>
                 </p>
                 <?php
                     $posts = get_posts(array(
@@ -129,7 +129,7 @@
                       'taxonomy' => $term->taxonomy,
                       'term' => $term->slug,
                       'nopaging' => true, // to show all posts in this taxonomy, could also use 'numberposts' => -1 instead
-                      'orderby' => 'title',
+                      'orderby' => 'date',
                       'order' => 'ASC'
                     ));
                     foreach($posts as $post): // begin cycle through posts of this taxonmy

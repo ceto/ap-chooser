@@ -1,7 +1,13 @@
-$green: #425719;
+$green: #719430;
 $light-green: #eef0e3;
 $extralight-green: #f1f6f2;
+$dark-green: #507210;
 
 html {
   min-width: auto;
+}
+
+.avia-post-nav .label {
+  background-color: transparent;
+  padding:0;
 }
