@@ -177,8 +177,13 @@
   dt, dd {
     padding:.25rem 0;
   }
+  dt {
+    float:left;
+    clear:left;
+  }
   dd {
     float:right;
+    clear:right;
   }
   .apc-featlistitem {
     font-weight: $global-weight-bold;

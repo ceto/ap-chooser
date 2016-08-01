@@ -15,10 +15,10 @@
     <span class="datarow--cell"><?= emeletinfo(get_the_ID()) ?></span>
     <span class="datarow--cell"><?= get_field('alapterulet') ?>m<sup>2</sup></span>
     <span class="datarow--cell"><?= get_field('nagyszobak') ?><?= get_field('felszobak')>0?'+'.get_field('felszobak'):'' ?></span>
-    <span class="datarow--cell"><?= get_field('erkely')>0?get_field('erkely'):'-' ?><?= get_field('terasz')>0?' / '.get_field('terasz'):' / -' ?></span>
+    <span class="datarow--cell"><?= get_field('erkely')>0?get_field('erkely'):'' ?><?= get_field('terasz')>0?get_field('terasz'):'' ?>m<sup>2</sup></span>
     <span class="datarow--cell"><?= get_field('tajolas') ?></span>
     <?php if ( get_field('statusz') === 'free' ) : ?>
-      <span class="datarow--cell"><strong><?= get_field('price') ?> M</strong></span>
+      <span class="datarow--cell"><strong><?= get_field('price') ?>&nbsp;M</strong></span>
     <?php else : ?>
       <span class="datarow--cell"><?= stateinfo(get_field('statusz')) ?></span>
     <?php endif; ?>
